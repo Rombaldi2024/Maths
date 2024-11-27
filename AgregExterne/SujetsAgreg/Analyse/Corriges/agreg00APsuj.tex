@@ -1,0 +1,348 @@
+\documentclass{article}
+\usepackage{amssymb}
+%\usepackage{amstex}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{latexsym}
+\usepackage{amscd}
+\usepackage{color}
+%\input{setps}
+%\input{psfig.sty}
+%\usepackage{fancyheadings}
+\catcode`\ç=13 \font \ronde=eusm10
+\defç{\c{c}}
+\catcode`\é=13
+\defé{\'e}
+\catcode`\à=13
+\defà{\`a}
+\catcode`\è=13
+\defè{\`e}
+\catcode`\â=13
+\defâ{\^a}
+\catcode`\û=13
+\defû{\^u}
+\catcode`\ù=13
+\defù{\`u}
+\catcode`\ê=13
+\defê{\^e}
+\catcode`\î=13
+\defî{\^\i}
+\catcode`\ô=13
+\defô{\^o}
+
+
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\bd}{\begin{document}}
+\newcommand{\ed}{\end{document}}
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+\parindent = 0pt
+\let\dps=\displaystyle
+\let\ds=\displaystyle
+\let\implique=\Rightarrow
+\let\equivalent=\Longleftrightarrow
+
+
+
+\def\conj#1{\overline{#1}}
+
+\def\quo#1#2{\D{\frac{#1}{#2}}}
+\def\somme#1#2#3{\D{\sum_{#1 = #2}^{#3}}}
+\def\limi#1#2{\displaystyle{\lim_{#1 \rightarrow #2}}}
+\def\limisup#1#2{\displaystyle{\limsup_{#1 \rightarrow #2}}}
+
+\def\D#1{\displaystyle{#1}}
+%\def\Inf{\mathop{\hbox{\rm inf}}}
+\def\ppcm{\mathop{\hbox{\rm ppcm}}}
+\def\Lcm#1{\D{\ppcm_{#1}}}
+\def\Min#1{\D{\min_{#1}}}
+\def\Max#1{\D{\max_{#1}}}
+\def\Inf#1{\D{\inf_{#1}}}
+\def\Sup#1{\D{\sup_{#1}}}
+\def\S#1#2{\D{\sum_{k=#1}^{#2}}}
+\def\Pro{\D{\prod_{i\not= k}}}
+\def\pro#1#2{\D{\prod_{i=#1}^{#2}}}
+\def\n{ \{ 1 ,\ldots ,n\} }
+\def\norme#1{\|#1\|}
+\def\Norme#1{N_{\infty}( #1 )}
+\def\NS#1{\|#1\| _\infty}
+\def\NQ#1{\|#1\| _2}
+\def\NT#1{ |||#1|||}
+\def\NI#1{\|#1\| _1}
+\def\abs#1{|#1|}
+\def\ep{\varepsilon}
+\def\phi{\varphi}
+\def\Int#1{\displaystyle {\buildrel\,\,\circ\over#1}}
+\def\limsup{\mathop{\overline{\hbox{\rm lim}}}}
+\def\liminf{\mathop{\underline{\hbox{\rm lim}}}}
+\def\cont{\mathcal{C}}
+\def\la{\lambda}
+\def\al{\alpha}
+\def\zero{\widetilde{\omega}}
+\def\impl{\Rightarrow}
+\def\equiv{\Longleftrightarrow}
+\def\qq{\forall}
+\def\rl{\medskip \\}
+\def\rll{\vskip3mm}
+\def\dim#1{{\rm dim}( #1 )}
+\def\com{{\rm com}}
+\def\rg{{\rm rg}}
+\def\ima{{\rm Im}}
+\def\Vect{{\rm Vect}}
+\def\deg#1{{\rm deg}(#1)}
+\def\det#1{{\rm det}\ #1}
+\def\tr#1{{\rm tr}\ (#1)}
+\def\mat{{\rm Mat}}
+\def\m#1{{\mathcal{M}}_n(#1 )}
+\def\gl#1{{\mathcal{GL}}_n (#1 )}
+\def\sym{{\mathcal S}_n (\R )}
+\def\sp{{\mathcal S}_n ^+ (\R )}
+\def\sdp{{\mathcal S}_n ^{+*} (\R )}
+\def\VC#1#2{\pmatrix{#1\cr
+                     #2\cr}}
+\def\mm#1#2#3#4{\left( \begin{array}{cc}
+                           #1 & #2 \\
+                           #3 & #4  \end{array}
+                 \right)}
+\def\adj#1{{}^t \overline{#1}}
+\def\trans#1{{}^t #1}
+\def\cal#1{\mathcal{#1}}
+\def\lin#1{\mathcal{L}(#1)}
+\def\go{{\rm O}(n)}
+\def\gu{{\rm U}(n)}
+\def\GO{{\rm O}(E)}
+\def\GU{{\rm U}(E)}
+\def\psc#1#2{\bigl( #1 \ / \ #2 \bigr)}
+\def\blr#1{\bigl( #1 \bigr)}
+
+
+
+
+
+
+\def\bs{\bigskip}
+\def\ms{\medskip}
+
+\font\ineg=msam8
+\def\ie{\mathrel{\hbox{\ineg 6}}} % <= français
+\def\se{\mathrel{\hbox{\ineg >}}} % >= français
+
+%\def\Sup{\mathop{\hbox{\rm sup}}}
+%\def\Inf{\mathop{\hbox{\rm inf}}}
+
+
+
+
+% Gestion "à la main" : si la font msbm existe
+% peut adopter les définitions suivantes :
+\font\bbw=msbm10 % N, Z, D, Q, R, C, H, F éclairés, vide plus joli
+\def\N{\hbox{\bbw N}} \def\Z{\hbox{\bbw Z}}
+ \def\Q{\hbox{\bbw Q}}
+\def\R{\hbox{\bbw R}} \def\C{\hbox{\bbw C}}
+\def\H{\hbox{\bbw H}} \def\F{\hbox{\bbw F}}
+\def\K{\hbox{\bbw K}}
+\def\L{\hbox{\bbw L}}
+\def\O{\hbox{\bbw O}}
+
+\def\MM{\hbox{\bbw M}}
+% Enfin, on peut utiliser celles qui suivent :
+%\def\N{\mbox{$ I \! \! N $}}
+%\let\Nit=\N
+%\def\nN{\mbox{$ \N^{\ast} $}}
+%\def\Z{\mbox{$ \, Z \! \! \! Z $}}
+%\let\Zit=\Z
+%\def\nZ{\mbox{$ \Z^{\ast} $}}
+%\def\Q{\mbox{$ \, \, l \! \! \! Q $}}
+%\let\Qit=\Q
+%\def\R{I \! \! R}
+%\let\Rit=\R
+%\def\C{\mbox{$ \, \, l \! \! \! C $}}
+%\let\Cit=\C
+%\def\K{\mbox{$ I \! \! K \! $}}
+
+\def\eps{\mbox{$ \varepsilon $}}
+\def\vphi{\mbox{$ \varphi $}}
+\def\vtheta{\mbox{$ \vartheta $}}
+
+
+\def\hfl#1#2{\smash{\mathop{\hbox to 12mm{\rightarrowfill}}
+\limits^{\scriptstyle#1}_{\scriptstyle#2}}}
+\def\vfl#1#2{\llap{$\scriptstyle #1$}\left\downarrow
+\vbox to 6mm{}\right.\rlap{$\scriptstyle #2$}}
+\def\diagram#1{\def\normalbaselines{\baselineskip=0pt
+\lineskip=10pt\lineskiplimit=1pt}   \matrix{#1}}
+
+\def\build#1_#2^#3{\mathrel{\mathop{\kern 0pt#1}\limits_{#2}^{#3}}}
+\def\dessus#1^#2{\mathrel{\mathop{\kern 0pt#1}^{#2}}}
+\def\dessous#1_#2{\mathrel{\mathop{\kern 0pt#1}_{#2}}}
+
+\long\def\th#1#2{\hbox{\vtop{{\bf Théorème #1} : {\it #2\hfill\bs}}}}
+\long\def\df#1#2{\hbox{\vtop{{\bf Définition #1} : {\it #2\hfill\bs}}}}
+\long\def\lm#1#2{\hbox{\vtop{{\bf Lemme #1} : {\it #2\hfill\bs}}}}
+\long\def\cor#1#2{\hbox{\vtop{{\bf Corollaire #1} : {\it #2\hfill\bs}}}}
+\long\def\dm{\hbox{{\it Démonstration} {:\hfill}}}
+
+\def\itm#1#2{\hbox{\hbox to 5mm{\it (#1)}} \hbox {\vtop{\hsize=144mm#2\vfill\ms}\hfill}}
+
+\def\bib#1#2{\hbox{\hbox to 10mm{[#1] :\hfill} \hfill \hbox to 144mm{\vtop{\hsize=144mm#2\vfill\ms}\hfill}}}
+
+% Programme de math avec colonne de commentaire
+\long\def\tx#1#2{\hbox{\hbox to 94mm{\vtop{\hsize=90mm#1\vfill}\hfill}
+\hfill\hbox to 74mm{\vtop{\hsize=70mm#2\vfill}\hfill}}\filbreak}
+
+
+
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{-.5in}
+\setlength{\textheight}{9.6in}
+
+\parindent = 0pt
+\newcommand{\shskip}{\hskip 2mm}
+\newcommand{\sshskip}{\hskip 1mm}
+
+\begin{document}
+\centerline{\large{\bf Agrégation de Mathématiques 2000 - Concours Externe}}\ \rl
+\centerline{\large{Analyse et Probabilités.}}\ \rl \ \rl
+On notera pour $k\in \N$, $\cal{C}^k$ l'ensemble des fonctions $k$-fois dérivables de $\R$ dans $\C$, et $\cal{C}_c^k$ l'ensemble des fonctions $k$-fois dérivables à support compact de $\R$ dans $\C$. \rl
+Pour $p\geq1$ et $n\in \N$, on définit $\cal{L}^p(\R^n)=\{ f : \R^n \mapsto \C \ , \ {\rm mesurable\ telle\ que}\ \norme{f}_{L^p}^p = \D{\int_{\R^n}} \abs{f}^p(x) dx < +\infty \}  $
+\rl et l'ensemble $L^p(\R^n)$ des classes d'équivalence de $\cal{L}^p(\R^n)$ par la relation $\cal{R}$, où $f \cal{R} g$ si et seulement si $f(x)=g(x)$ pour presque tout $x$ pour la mesure de Lebesgue.\rll
+On désigne par $E$ l'ensemble des combinaisons linéaires finies de fonctions caractéristiques d'intervalles bornés. \rl
+L'espace $L^2 = L^2(\R)$ est muni du produit scalaire $(u | v) = \D{\int_{\R}} u(x) \overline{v}(x) dx $ et $\norme{u}_{L^2} = (u|u)^{1/2}$. On admet que pour $k\in \N$, $L^1(\R) = \overline{\cal{C}_c^k}$ pour la norme $\norme{.}_{L^1}$ (pour un ensemble $A$, $\overline{A}$ désigne l'adhérence de $A$). \rll
+Les parties $III$, $IV$ sont indépendantes l'une de l'autre. On pourra admettre le résultat d'une question dans les suivantes en indiquant précisément ce qui est admis. \rll \ \rll
+\centerline{\large \bf Partie I}
+\be
+\item Démontrer que
+\be
+\item $L^2 = \overline{E}$,
+\item $L^2 = \overline{\cal{C}_c^k}$ pour $k \in \N$. \\
+\ee
+\item On définit pour $u \in E , \qq x \in \R , \widetilde{u}(x) = \D{\int_{\R}} e^{-2i\pi xy}u(y)dy$.
+\be
+\item Démontrer que pour $\al \in \R$, l'intégrale $I(\al) = \D{\int_{\R}} \quo{1-\cos (\al x)}{x^2} dx$ existe et que $I(\al) = \pi \abs{\al}$.
+\item Démontrer que $\qq (u,v) \in E^2 , (\widetilde{u}|\widetilde{v}) = (u|v)$. \\
+\ee
+\item Conclure qu'il existe une application $\Theta$ :
+$$L^2 \mapsto L^2 \ ,$$
+$$u \mapsto \widehat{u} $$ telle que :\rl
+$i)$ \ \ $\qq u \in E , \widehat{u} = \widetilde{u}$, \rl
+$ii)$\ \ $\qq (u,v) \in (L^2)^2 , (\widehat{u}|\widehat{v}) = (u|v)$ \  et \ $\norme{\widehat{u}}_{L^2} = \norme{u}_{L^2}$. \rl
+\item
+\be
+\item Montrer que $\qq u \in L^2 \cap L^1$, il existe une suite $(u_n) \in E$ et $U \in L^1$ telle que, lorsque $n$ tend vers l'infini,
+$$u_n \rightarrow u \ \ {\rm dans}\ \ L^2 , \ \ \ u_n \rightarrow u \ \ {\rm dans}\ \ L^1 ,$$
+et pour presque tout $x$, pour $n\in \N ,\ \abs{u_n(x)} \leq \abs{U(x)}$.\\
+\item Montrer que $\qq u \in L^2 \cap L^1$,
+$$\widehat{u}(x) = \int_{\R} e^{-2i\pi xy} u(y) dy $$
+pour presque tout $x$.\rl
+Ainsi si $u \in \cal{L}^2 \cap \cal{L}^1$, la fonction
+$$x \mapsto \int_{\R}  e^{-2i\pi xy} u(y) dy$$
+est un représentant noté désormais $\widehat{u}$ de $\Theta (u) \in L^2$.\\
+\item Démontrer que pour $u \in E$,\ $\widehat{\widehat{u}}(x) = u(-x)$ pour presque tout $x$. \rl On pourra dériver $f_n(x)= \D{\int_n^n}  e^{-2i\pi xy} \widehat{u}(y) dy$ où $u$ est la fonction caractéristique d'un intervalle \rl $[a,b]$, et étudier $\limi{n}{+\infty}(f_n(x_1)-f_n(x_2))$. \rl
+En déduire que pour $u \in L^2$, \ $\widehat{\widehat{u}}(x) = u(-x)$ pour presque tout $x$. \\ On pourra utiliser la question $I.1 a)$.
+\ee
+\ee
+\ \rl
+\centerline{\large \bf Partie II}\ \rl
+\be
+\item
+\be
+\item Pour $u_0 \in L^2$, démontrer qu'il existe une fonction $u(t) \in L^2$ définie pour tout $t \in \R$ :\rl $$x \mapsto u(t,x) \ \ {\rm telle\ que}\ \ \qq y \in \R$$
+$$u(0)(y)=u_0(y),\ \ \ \ (1)$$
+$$\widehat{u(t)}(y) = e^{-i4\pi^2 ty^2} \widehat{u_0}(y) .\ \ \ \ (2)$$\ \\
+On notera $u(t,x) = u(t)(x)$ pour tout $(t,x) \in \R^2$. \\
+\item Démontrer que $J=\D{\int_{\R^+}} e^{-ix^2}dx$ existe et calculer sa valeur. \rl On utilisera pour cela, l'application $h : z \mapsto e^{-z^2}$ de $\C$ dans $\C$, et le théorème des résidus après l'avoir énoncé. On rappelle que $\D{\int_{\R^+}} e^{-x^2}dx = \quo{\sqrt{\pi}}{2}$. \\
+\item Montrer que si $u_0 \in \cal{C}_c^2(\R)$, alors $u_0 \in L^2 \cap L^1$ et $\widehat{u_0} \in L^2 \cap L^1$. \\
+\item Démontrer que pour tout $u_0 \in L^2 \cap L^1$ et $t\in \R^\star$,
+$$u(t,x) = \int_{\R} \quo{e^{\frac{i(x-z)^2}{4t}}}{(4\pi it)^{1/2}} u_0(z) dz , \ \ \ \ (3)$$
+pour presque tout $x \in \R$ et pour une définition de $(4\pi it)^{1/2}$ que l'on précisera.\rl De même que précédemment on supposera à partir de maintenant la relation $(3)$ vraie pour \\ tout $x$. \rll
+Dans la suite du problème, on dira qu'une fonction
+$$\R^2 \mapsto \C ,$$
+$$(t,x) \mapsto u(t,x) ,$$
+est {\it solution de} $(S)$ {\it sur } $\R$ si et seulement s'il existe $u_0 \in L^2$ tel que pour tout $t \in \R$,\\ $u(t) : x \mapsto u(t,x)$ vérifie les relations $(1), (2)$ du $II.1 a)$. On notera que si $u_0 \in L^2 \cap L^1$ alors pour tout $(t,x) \in \R^\star \times \R$, $u(t,x)$ vérifie la relation $(3)$. \rl
+On dira que $u_0$ est la donnée initiale de la solution $u(t)$. On considère, dans la suite de la partie $II$, une solution $u(t,x)$ de $(S)$ sur $\R$. \\
+\ee
+\item Calculer $\norme{u(t)}_{L^2}$ pour $t \in \R$. En déduire que pour une donnée initiale $u_0 \in L^2$, il existe une unique solution sur $\R$ de $(S)$ de donnée initiale $u_0$.\\
+\item  Exprimer la solution $v(t,x)$ sur $\R$ de l'équation $(S)$ avec pour donnée initiale $V_0(x)$ en fonction de $u(t,x)$ dans les cas suivants :\rl
+$i)$\ $V_0(x) = u_0(x-x_0)$ pour $x_0 \in \R$.\rl
+$ii)$\ $V_0(x) = \lambda_0^{1/2} u_0(\lambda_0 x)$ pour $\lambda_0 \in \R^+$.\rl
+\item
+\be
+\item Pour $c \in \R$, montrer que $v(t,x) = e^{icx - ic_1t} u(t,x-c_2t)$ est solution sur $\R$ de l'équation $(S)$, où $c_1$ et $c_2$ sont des éléments de $\R$ à définir en fonction de $c$. Exprimer dans ce cas $v(0,x)$ en fonction de $u_0(x)$. \\
+\item Montrer que l'équation $(S)$ admet une solution sur $\R$ vérifiant pour tout $t \in \R^\star$ la relation $v(t,x) = \quo{1}{(it)^{1/2}} e^{i\frac{x^2}{4t}} \overline{u}
+\left( \frac{1}{t},\frac{x}{t} \right)$ pour une condition initiale $v_0(x) = v(0,x)$ qui sera exprimée à l'aide de $\widehat{u}_0$. On commencera par écrire pour $u_0 \in L^2 \cap L^1$, $\overline{u}\left( \quo{1}{t},\quo{x}{t}\right)$ en utilisant la formule $(3)$. \rl \ \\
+\ee
+\ee
+\centerline{\large \bf Partie III} \ \rll
+Le but de cette section est de démontrer que si $u(t,x)$ est solution de $(S)$ sur $\R$, alors $u(t,x) \in L^6(\R^2)$ et il existe une constante universelle $C(S)$ telle que
+$$\qq u_0 \in L^2 \ ,\ \int_{\R} \abs{u(t,x)}^6 dx dt \leq C(S) \left\{ \int_{\R} \abs{u_0}^2 dx \right\}^3 \ .$$ \rll Dans cette partie, $u(t,x)$ désigne une solution de $(S)$ sur $\R$ et $u_0$ sa donnée initiale.
+\be
+\item Donner un exemple explicite d'une fonction définie sur $\R^2$
+$$\R^2 \mapsto \R ,$$
+$$(t,x) \mapsto f(t,x) ,$$
+telle que
+$$ f \in \cal{C}^2(\R^2), \ \  f\in L^6(\R^2) ,$$
+$$\qq t \in \R , f(t,.) \in L^2(\R) \ \ {\rm et} \ \ \int_{\R}f(t,x)^2 dx = \int_{\R} f(0,x)^2 dx \ .$$ \\
+On suppose dans les questions $2), 3), 4)$ que $\widehat{u}_0 \in \cal{C}_c^0(\R)$. \\
+\item Démontrer que :
+$$\int_{\R^2} \abs{u(t,x)}^6 dx dt = \int_{\R^2} \left| \int_{\R^2} e
+^{-i4\pi^2 t(\xi^2+\eta^2)+i2\pi x(\xi+\eta)} \widehat{u}_0(\xi) \widehat{u}_0(\eta) d\xi d\eta \right|^3 dx dt \ .$$\\
+\item Démontrer qu'il existe une constante $C_1$ indépendante de $u$, telle que
+$$\left( \int_{\R^2} \abs{u(t,x)}^6 \right)^{1/2} \leq C_1 \int_{\R^2}\quo{\abs{\widehat{u}_0(\xi)}^{3/2} \abs{\widehat{u}_0(\eta)}^{3/2}}{\abs{\xi -\eta}^{1/2}} d\xi d\eta \ .$$\\
+On utilisera sans le démontrer le résultat suivant : si une fonction $H \in L^2(\R^2) \cap L^1(\R^2)$, on définit
+$$\qq(y_1,y_2) \in \R^2 , \widehat{H}(y_1,y_2) = \int_{\R^2} e^{-2\pi i (y_1 u + y_2 v)} H(u,v) du dv ,$$
+et si $H \in L^{3/2}(\R^2)$ alors $\widehat{H} \in L^3(\R^2)$ et il existe une constante universelle $C_2$ telle que
+$$\int_{\R^2} \abs{\widehat{H}(y_1,y_2)}^3 dy_1 dy_2 \leq C_2 \left\{ \int_{\R^2} \abs{H(u,v)}^{3/2} du dv \right\}^2 \ .$$\\
+\item En conclure que si $u(t,x)$ est solution de $(S)$ sur $\R$ (toujours avec $\widehat{u}_0 \in \cal{C}_c^0(\R)$), alors $u(t,x) \in L^6(\R^2)$ et il existe une constante universelle $C(S)$ telle que :
+$$\int_{\R^2} \abs{u(t,x)}^6 dx dt \leq C(S) \left\{ \int_{\R} \abs{u_0}^2 dx \right\}^3 \ .$$\\ On utilisera sans le démontrer le fait suivant : pour une fonction $w \in L^2(\R)$, il existe une constante universelle $C_3$ telle que
+$$\int_{\R} \left( \int_{\R} \quo{\abs{w(\eta)}^{3/2}}{\abs{\xi - \eta}^{1/2}} d\eta \right)^4 d\xi \leq C_3 \left\{ \int_{\R} \abs{w(x)}^2 dx \right\}^3 \ .$$\\
+\item On admet que le résultat de la question $III.4$ s'étend au cas où $u_0 \in L^2$. \rl En appliquant l'estimation obtenue dans $III.4$ à la fonction $v(t,x)$ définie dans la question $I.4 b)$, obtient-on une estimation différente pour
+$$\int_{\R^2} \abs{u(t,x)}^6 dx dt \ ? $$\ \rll
+\ee
+\centerline{\large \bf Partie IV}  \rll \ \\
+\be
+\item
+\be
+\item On suppose que $u_0 \in \cal{C}_c^2(\R)$. Démontrer que si $u(t,x)$ désigne la solution de $(S)$ sur $\R$ associée à la donnée initiale $u_0$, on a les propriétés suivantes :
+$$u \in \cal{C}^1(\R^\star \times \R), \ \qq t \in \R^\star,\ u(t) \in \cal{C}^2(\R) ,$$
+$${\rm et}\  \ \ \qq (t,x) \in \R^\star \times \R ,\ \  i\quo{\partial u}{\partial t} = -\quo{\partial^2 u}{\partial x ^2} , $$
+où $u(t) : x \mapsto u(t,x)$. \\
+\item Montrer que $\limi{t}{0} \ u(t)$ existe dans $L^2$ et donner cette limite. \rll
+Par extension dans la suite du problème, on dira que pour $T>0$ une fonction
+$$[0,T] \times \R \ \mapsto \ \C ,$$
+$$\ \ (t,x) \mapsto u(t,x) ,$$ \\
+est {\it solution sur} $[0,T]$ {\it de} $(N)$ si et seulement si \\
+$$u \in \cal{C}^1([0,T] \times \R ), \ \qq t \in [0,T], \ u(t) \in \cal{C}^2(\R) \cap L^2(\R) ,$$
+$${\rm et}\ \ \qq (t,x) \in [0,T] \times \R, \ i \quo{\partial u}{\partial t} = -\quo{\partial^2 u}{\partial x^2} - \abs{u}^4 u ,$$ \\
+où, pour $t \in [0,T]$, $u(t)$ désigne l'application
+$$\R \mapsto \C $$
+$$x \mapsto u(t,x)\ .$$\rl
+La fonction définie pour $x \in \R$ par la relation $u_0(x)=u(0,x)$ est par définition dans ce cas la donnée initiale de la solution $u(t)$. On admet que pour tout $T>0$ et $u_0 \in \cal{C}^2(\R) \cap L^2(\R)$ donnés, toute solution de $(N)$ sur $[0,T]$ associée à $u_0$ si elle existe, est unique.\\
+\ee
+\item  Exhiber une fonction explicite à valeurs réelles $Q \in \cal{C}^2(\R)$ telle que
+$$Q \not= 0 \ ,\ Q \in L^2(\R) \ , \ \qq x \in \R , Q''+Q^5=Q ,$$
+où $Q''$ désigne la dérivée seconde de $Q$. On cherchera $Q(x)$ sous la forme $\quo{\al}{(\cosh(\beta x))^{\gamma}}$ où $\al, \beta, \gamma$ sont des constantes réelles à déterminer. \\
+\item Démontrer que la fonction définie pour $(t,x) \in \R^2$ par
+$$P(t,x) = e^{it} Q(x)$$
+est une solution de $(N)$ sur $\R$. \\
+\item Soit $T>0$; on définit la fonction $S(t,x)$ pour $(t,x) \in [0,T[ \times \R$ par la relation suivante
+$$S(t,x) = \quo{1}{(T-t)^{1/2}}\ e^{-\frac{i}{(t-T)} + i \frac{x^2}{4(t-T)}} \ Q\left( \quo{x}{t-T}\right) \ .$$
+\be
+\item Démontrer que $S$ est une solution de $(N)$ sur $[0,T[$. \\
+\item Pour $x \in \R$ fixé, la fonction $S(t,x)$ admet-elle une limite finie quand $t$ tend vers $T$ ? \\
+\ee
+\item Démontrer qu'il existe $u_0 \in \cal{C}^2(\R) \cap L^2(\R)$ telle que $(N)$ n'admette pas de solution sur $\R$ ayant $u_0$ pour donnée initiale. \\
+\item
+\be
+\item Pour $T>0$ et $\lambda >0$, démontrer que si $u(t,x)$ est une solution de $(N)$ sur $[0,T]$, alors $\lambda^{1/2} u(\lambda^2 t , \lambda x)$ \rl est une solution de $(N)$ sur
+$\left[ 0, \frac{T}{\lambda^2} \right]$. \\
+\item On dira que la solution $P(t,x)$ est {\it stable dans} $L^2$ si et seulement si \rl \ $\qq \ep >0 , \exists \delta > 0 , \qq u_0 \in \cal{C}^2(\R) \cap L^2(\R)$, tel que $\D{\int_{\R}}\abs{P(0,x)-u_0(x)}^2 dx \leq \delta$, alors il existe une \rl solution de $(N)$ sur $\R$ , $u(t,x)$ de donnée initiale $u_0$, telle que,
+$$\qq t \in \R ,\ \int_{\R}\abs{P(t,x)-u(t,x)}^2 dx \leq \ep \ .$$ \\
+Démontrer que la solution $P(t,x)$ n'est pas stable dans $L^2$.
+\ee
+\ee
+\ed

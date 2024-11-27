@@ -1,0 +1,637 @@
+\documentclass{article}
+\usepackage{pstricks}
+\usepackage{pst-plot}
+\usepackage{amssymb}
+%\usepackage{amstex}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amscd}
+%\usepackage{fancyheadings}
+\catcode`\ç=13
+\defç{\c{c}}
+\catcode`\é=13
+\defé{\'e}
+\catcode`\à=13
+\defà{\`a}
+\catcode`\è=13
+\defè{\`e}
+\catcode`\â=13
+\defâ{\^a}
+\catcode`\ù=13
+\defù{\`u}
+\catcode`\ê=13
+\defê{\^e}
+\catcode`\î=13
+\defî{\^\i}
+\catcode`\ô=13
+\defô{\^o}
+\newcommand{\bm}{\boldmath}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\bd}{\begin{document}}
+\newcommand{\ed}{\end{document}}
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+\newcommand{\limit}[1]
+{\begin{picture}(45,3)
+\put(1,3){\vector(1,0){40}}
+\put(11,2){\ensuremath{_{_{#1\to\infty}}}}
+\end{picture}}
+\newcommand{\limite}[2]
+{\begin{picture}(45,3)
+\put(1,3){\vector(1,0){40}}
+\put(11,2){\ensuremath{_{_{#1\to#2}}}}
+\end{picture}}
+
+\let\dps=\displaystyle
+\let\ds=\displaystyle
+\newcommand{\quo}{\dps\frac}
+\let\impl=\Rightarrow
+\let\equ=\Longleftrightarrow
+\newcommand{\qqs}{\forall\:}
+\newcommand{\conj}{\overline}
+\let\ex=\exists
+\newcommand{\ssi}{si et seulement si}
+\newcommand{\ssil}{si et seulement s'il}
+
+\def\adots{\mathinner{\mkern2mu\raise1pt\hbox{.}
+\mkern3mu\raise4pt\hbox{.}\mkern1mu\raise7pt\hbox{.}}}
+\def\bs{\bigskip}
+
+\font\ineg=msam8
+\def\ie{\mathrel{\hbox{\ineg 6}}} % <= fran‡ais
+\def\se{\mathrel{\hbox{\ineg >}}} % >= fran‡ais
+
+\def\Sup{\mathop{\hbox{\rm sup}}}
+\def\Inf{\mathop{\hbox{\rm inf}}}
+
+\def\itb{\item[$\bullet$]}
+
+\let\cv=\to
+\let\lto=\longrightarrow
+\renewcommand\limsup[1]{\mbox{${\rm\overline{lim}}\,{#1}$}}
+\renewcommand\liminf[1]{\mbox{${\rm\underline{lim}}\,{#1}$}}
+
+\newcommand{\el}{\ensuremath{\mathbb L}}
+\newcommand{\N }{\ensuremath{\mathbb N} } \newcommand{\Z}{\ensuremath{\mathbb Z} }
+\newcommand{\D}{\ensuremath{\partial} }
+\newcommand{\Q}{\ensuremath{\mathbb Q} } \newcommand{\R}{\ensuremath{\mathbb R} } \newcommand{\C}{\ensuremath{\mathbb C} }
+\newcommand{\U}{\ensuremath{\mathbb U} }
+\newcommand{\K}{\ensuremath{\mathbb K} }
+
+% Sinon on utilisent celles qui suivent (en retirant les % et en les remettant au dessus)
+%\def\N{\mbox{$ I \! \! N $}}
+%\let\Nit=\N
+%\def\nN{\mbox{$ \N^{\ast} $}}
+%\def\Z{\mbox{$ \, Z \! \! \! Z $}}
+%\let\Zit=\Z
+%\def\nZ{\mbox{$ \Z^{\ast} $}}
+%\def\Q{\mbox{$ \, \, l \! \! \! Q $}}
+%\let\Qit=\Q
+%\def\R{I \! \! R}
+%\let\Rit=\R
+%\def\C{\mbox{$ \, \, l \! \! \! C $}}
+%\let\Cit=\C
+%\def\K{\mbox{$ I \! \! K \! $}}
+
+\def\eps{\mbox{$ \varepsilon $}}
+
+
+% Pour des ensembles … des puissances n_iŠmes, des d‚rivations...
+%\newcommand\mN[1]{\mbox{$ \Nit^{#1} $}}
+%\newcommand\mZ[1]{\mbox{$  \Zit^{#1} $}}
+%\newcommand\mQ[1]{\mbox{$ \Qit^{#1} $}}
+%\newcommand\mR[1]{\mbox{$  \Rit^{#1} $}}
+%\newcommand\mC[1]{\mbox{$ \Cit^{#1} $}}
+
+\newcommand\Cl[1]{\mbox{$ {\cal C}^{#1} $}}
+%\newcommand\cc[1]{\mbox{$ {\cal{#1}} $}}
+%\newcommand\gb[1]{\mathop{\overline{#1}}}
+%\newcommand\D[1]{\mbox{$ {#1}^{\prime} $}}
+%\newcommand\DD[1]{\mbox{$ {#1}^{\prime\prime} $}}
+%\newcommand\DDD[1]{\mbox{$ {#1}^{\prime\prime\prime} $}}
+
+%commandes sp‚cifiques algŠbre lin‚aire
+
+\newcommand\mat[2]{\mbox{$ {\cal{M}}_{#1}({#2}) $}}
+
+\newcommand\gf[1]{\mbox{$ \overrightarrow{#1} $}}
+
+\def\ev{espace vectoriel }
+\def\evs{espaces vectoriels }
+\def\rev{espace vectoriel sur $\R$}
+\def\cev{espace vectoriel sur \C}
+\def\kev{espace vectoriel sur \K}
+\newcommand{\sev}{sous-espace vectoriel }
+\newcommand{\sevs}{sous-espaces vectoriels }
+\def\evn{espace vectoriel norm‚}
+\let\sd=\oplus
+\newcommand\lin[1]{\mbox{${\cal L}({#1})$}}
+\newcommand\glin[1]{\mbox{${\cal GL}({#1})$}}
+\renewcommand\ker[1]{\mbox{${\rm Ker}\,{#1}$}}
+\newcommand\im[1]{\mbox{${\rm Im}\,{#1}$}}
+\newcommand\rg[1]{\mbox{${\rm rg}\,{#1}$}}
+\renewcommand\dim[1]{\mbox{${\rm dim}\,{#1}$}}
+\newcommand\codim[1]{\mbox{${\rm codim}\,{#1}$}}
+
+\newcommand\polr[1]{\Rit_{#1}[X]}
+\newcommand\polc[1]{\mbox{$ \Cit_{#1}[X] $}}
+\newcommand\mnul[1]{\mbox{$O \! \! \! \! I_{#1} $}}
+
+\def\hfl#1#2{\smash{\mathop{\hbox to 12mm{\rightarrowfill}}
+\limits^{\scriptstyle#1}_{\scriptstyle#2}}}
+\def\vfl#1#2{\llap{$\scriptstyle #1$}\left\downarrow
+\vbox to 6mm{}\right.\rlap{$\scriptstyle #2$}}
+\def\diagram#1{\def\normalbaselines{\baselineskip=0pt
+\lineskip=10pt\lineskiplimit=1pt}   \matrix{#1}}
+\addtolength\headheight{-1cm}
+%\addtolength\marginparwidth{0cm}
+\addtolength\oddsidemargin{-2cm}
+\addtolength\evensidemargin{-2cm}
+
+
+
+%NB : originellement, on avait enlev‚ 1.5cm … headheight, mais on ne voyait plus la num‚rotation
+\addtolength\textwidth{3.6cm}
+\addtolength\textheight{6cm}
+\addtolength\topmargin{-2.5cm}
+\addtolength\footskip{.2cm}
+
+% définition propre au problème
+\newcommand{\w}{\widehat}
+
+\def\CheminsHomotopes{\psset{unit=4mm}\pspicture(0,0)(25,10)
+\rput[bl](0,0){\pspicture(-5,-5)(5,5)
+\pscircle(0,0){5}%
+\pscircle(0,0){3}%
+\psarc{->}(0,0){5}{175}{180}
+\psarc{<-}(0,0){3}{170}{180}%
+\psarc{->}(0,0){5}{-5}{0}
+\psarc{<-}(0,0){3}{-2}{5}%
+\rput(-4,4.3){$\scriptstyle|z|=r$} \rput(-2.2,3){$\scriptstyle|z|=r'$}
+\endpspicture}
+\rput(11.2,5){$=$}\rput[bl](12.4,0){\pspicture(-5,-5)(0,5)
+\psarc(0,0){5}{90}{270}%
+\psarc(0,0){3}{90}{270}%
+\psarc{->}(0,0){5}{175}{180}
+\psarc{<-}(0,0){3}{170}{180}%
+\psline(0,-5)(0,-3)%
+\psline{->}(0,-4.1)(0,-4)%
+\psline(0,5)(0,3)%
+\psline{->}(0,3.9)(0,4)
+\endpspicture}
+\rput(18.6,5){$+$} \rput[bl](19.8,0){\pspicture(0,-5)(5,5)
+\psarc(0,0){5}{-90}{90}%
+\psarc(0,0){3}{-90}{90}%
+\psarc{->}(0,0){5}{-5}{0}
+\psarc{<-}(0,0){3}{-2}{5}%
+\psline(0,-5)(0,-3)%
+\psline{->}(0,4.1)(0,4)%
+\psline(0,5)(0,3)%
+\psline{->}(0,-3.9)(0,-4)
+\endpspicture}
+\endpspicture}
+
+
+
+
+\begin{document}
+\begin{center}
+\Large{\textbf{Agrégation externe 2000}}\\[.3cm]\end{center}%
+{\Large\textbf{Corrigé de l'épreuve d'analyse}}\\[.3cm]%
+\textit{Transformation de Fourier; formule d'inversion et applications;\\ propriétés d'un exemple
+d'équation aux dérivées partielles. }\\[.3cm] \hspace*{5cm}\textbf{Solution par F. SUFFRIN}\\[.3cm]
+\begin{center}
+\textbf{\LARGE{Partie I}}\\[.6cm]\end{center}
+\textbf{\bm 1-a $L^2=\overline{E}$ :} Considérons $u$ dans $L^2$. Pour répondre au problème, il
+suffit de traiter le cas $u\se0$.
+
+Le théorème de convergence dominée assure la convergence dans $L^2$ de $(u\chi_{[-n,n]})_{n\in\N}$
+vers $u$; on peut alors se ramener au cas où $u\in L^2\cap L^1$.
+
+De même, le théorème de convergence dominée assure la convergence vers $u$ dans $L^2$ de la suite
+de fonctions définies pour presque tout $x$ dans $\R$ par
+$$u_n(x)=\left\{\begin{array}{ll}u(x)&\textnormal{ si }\ u(x)\ie n\\0&\textnormal{
+sinon}\end{array}\right..$$ Ceci permet de se ramener en outre au cas où l'on peut trouver $C>0$
+tel que $0\ie u\ie C$.
+
+Fixons un réel $\varepsilon>0$; d'après les hypothèses, on peut trouver $v\in C_c^0$ tel que
+$$\|u-v\|_{L^1}\ie{\varepsilon^2\over8C}.$$ On peut même supposer $v\se0$, puis en considérant
+$\min(C,v)$, se ramener à $0\ie v\ie C$.\\ Cela conduit à la majoration
+$$\|u-v\|_{L^2}\ie{\varepsilon\over2}.$$
+
+ $v$ étant limite uniforme d'éléments de $E$ sur son support, il existe $\varphi\in E$ tel que
+ $$\|v-\varphi\|_{L^2}\ie{\varepsilon\over2}.$$
+
+ En résumé on a $$\|u-\varphi\|_{L^2}\ie\varepsilon,$$ ce qui fournit le résultat.
+\\[.3cm]
+\textbf{\bm 1-b $L^2=\overline{C_c^k}$ :} D'après ce qui précède, il suffit de savoir approcher dans $L^2$ les
+fonctions caractéristiques d'intervalle borné par des fonctions de $C_c^k$.
+
+Ce dernier point est classique. Parmi de multiples méthodes  possibles :
+
+
+ Il est facile d'approcher dans $L^2$ une fonction caractéristique d'intervalle bornée
+ par une application continue $f$ à support
+ compact.\\
+ Il est alors bien connu que si $(\rho_n)_{n\se1}$ désigne une suite régularisante,
+  la suite de fonctions $(f*\rho_n)_{n\se1}$ constitue une suite de fonctions de $C_c^k$ dont
+  chaque support est inclus dans un compact fixe $K$ et qui
+  converge uniformément  vers $f$ sur tout compact. \\ On peut supposer en outre que $K$ contient
+  le support de $f$. Alors on a
+  $$\|f-\rho_n*f\|^2_{L^2}=\int_K|f-f*\rho_n|^2\limit{n}0,$$
+  d'où le résultat.\\[.3cm]
+  \textbf{\bm 2-a $I(\alpha)=\pi|\alpha|$ :} Pour tout réel $\alpha $, la fonction
+  $$x\lto{1-\cos(\alpha x)\over x^2}$$ est définie continue sur $\R^*$, prolongeable par continuité
+  à l'origine par $\ds{\alpha^2\over2}$ et dominée en $\pm\infty$ par la fonction $\ds x\lto{1\over
+  x^2}$. Donc $I(\alpha)$ est définie pour tout réel $\alpha$.
+
+  L'identité à établir est vraie à l'origine. Pour $\alpha>0$, une intégration par parties donne
+  \begin{align}I(\alpha)&\nonumber=\alpha\int_\R{1-\cos t\over t^2}dt\\
+&\nonumber=\alpha\int_\R{\sin t\over t}dt\end{align} c'est à dire $$I(\alpha)=\pi\alpha.$$ Des
+raisons de parité conduisent au résultat souhaité.\\[.2cm]
+\textbf{Remarque :} Il existe de multiples façons d'établir la relation
+$$\int_\R{\sin t\over t}dt=\pi.$$ Par exemple en utilisant la méthode des résidus, en intégrant
+$z\lto z^{-1}e^{iz}$ sur un lacet bien choisi ou en étudiant la fonction
+$$x\lto\int_0^{+\infty}e^{-xt}{\sin t\over t}dt.$$\\[.3cm]
+\textbf{\bm 2-b $\qqs(u,v)\in E^2,(\tilde{u}|\tilde{v})=(u|v)$ :} Il suffit de vérifier pour
+ $I=[a,b]$ et $I'=[a',b']$ fixés l'égalité
+$$(\widetilde{\chi_I}|\widetilde{\chi_{I'}})=(\chi_I|\chi_{I'})=\int_\R\chi_{I\cap I'}.$$ On a pour
+tout réel non nul $x$ $$\widetilde{\chi_I}(x)={1\over2i\pi x}(e^{-2i\pi xa}-e^{-2i\pi xb})\ \
+\textnormal{ et }\ \ \widetilde{\chi_{I'}}(x)={1\over2i\pi x}(e^{-2i\pi xa'}-e^{-2i\pi xb'});$$  on
+en déduit que ces fonctions sont dans $L^2$ puis
+\begin{align}
+(\widetilde{\chi_I}|\widetilde{\chi_{I'}})&\nonumber=\int_\R{{1\over2i\pi x}(e^{-2i\pi
+xa}-e^{-2i\pi xb}){1\over2i\pi x}(e^{2i\pi xb'}-e^{2i\pi xa'})}dx\\ &\nonumber=\int_\R{1\over4\pi^2
+x^2}(e^{2i\pi x(a'-a)}+e^{2i\pi x(b'-b)}-e^{2i\pi x(b'-a)}-e^{2i\pi x(a'-b)})dx\\
+&\nonumber=\int_\R{1\over4\pi^2 x^2}(\cos({2\pi x(a'-a)})+\cos({2\pi x(b'-b)})-\cos({2\pi
+x(b'-a)})-\cos({2\pi x(a'-b)}))dx\\ &\nonumber={1\over4\pi^2}(I(2\pi
+(b'-a))+I(2\pi(a'-b))-I(2\pi(a'-a))-I(2\pi(b'-b)))\\
+&\nonumber={1\over2}(|b'-a|+|a'-b|-|a'-a|-|b'-b|)\\&\nonumber=\int_\R\chi_{I\cap I'}
+\end{align}
+la dernière égalité étant obtenue au prix d'une petite discussion.
+
+Le résultat annoncé en découle.\\[.3cm]
+\textbf{\bm 3 Existence de $\Theta$ :}   $E$ est partout dense  dans $L^2$ qui est un espace de Hilbert.
+
+L'opérateur précédent étant une isométrie de $E$ dans $L^2$, admet donc un unique prolongement
+continue sur $L^2$, assujetti à vérifier les propriétés annoncées.\\[.3cm]
+\textbf{\bm 4-a Existence de $(u_n)$ et $U$ :} Considérons $u$ dans $L^2\cap L^1$; là encore il
+ suffit de traiter le cas $u\se0$.
+
+Fixons un réel $\varepsilon>0$; la suite $(u_n)_{n\in\N}$ introduite en \textbf{I-1-a} converge
+vers $u$ dans $L^1$ et $L^2$.\\ En adaptant la suite du raisonnement, on détermine un élément $v$
+de $C_c^0$ tel que $$\|u-v\|_{L^1}+\|u-v\|_{L^2}\ie{\varepsilon\over2}.$$ $v$ étant limite uniforme
+d'éléments de $E$ sur son support, il existe $\varphi\in E$ tel que
+ $$\|v-\varphi\|_{L^1}+\|v-\varphi\|_{L^2}\ie{\varepsilon\over2}$$ ce qui conduit à
+$$\|u-\varphi\|_{L^1}+\|u-\varphi\|_{L^2}\ie\varepsilon.$$
+
+Il en résulte l'existence d'une suite $(\varphi_n)_{n\in\N}$ à valeurs dans $E$ telle que
+$$\|u-\varphi_n\|_{L^1}+\|u-\varphi_n\|_{L^2}\limit{n}0.$$ On peut extraire de
+$(\varphi_n)_{n\in\N}$ une suite $(u_n)_{n\in\N}$ convergente presque partout sur $\R$ vers $u$
+puis vérifiant  $$\qqs n\in\N,\|u_{n+1}-u_n\|_{L^1}\ie{1\over2^n},$$ de telle façon à avoir
+$\ds\sum_{n\in\N}|u_{n+1}-u_n|$ convergente presque partout sur $\R$ vers une fonction $U\in
+L^1$.\\ Alors $U$ est une fonction majorante intégrable de la suite $(u_n)_{n\in\N}$, ce qui
+fournit le résultat.\\[.3cm]
+\textbf{\bm 4-b Expression de $\Theta$ sur $L^2\cap L^1$ :} Considérons $u$ dans $L^2\cap L^1$ puis
+associons lui la suite $(u_n)_{n\in\N}$ et la fonction $U$ précédentes.
+
+$\widehat{u}$ est par définition la limite dans $L^2$ de $(\widehat{u_n})_{n\in\N}$; quitte à
+extraire une sous-suite, on peut supposer $(\widehat{u_n})_{n\in\N}$ convergente presque partout
+sur $\R$ vers $\widehat{u}$.\\
+ Pour tout réel $x$, le théorème de convergence dominée donne $$
+\widehat{u_n}(x)=\int_\R e^{-2i\pi xy}u_n(y)dy\limit{n}\int_\R e^{-2i\pi xy}u(y)dy$$ car les
+fonctions sous la première intégrale sont dominées par $U$.\\ Il en résulte pour presque tout $x$
+dans $\R$ $$\widehat{u}(x)= \int_\R e^{-2i\pi xy}u(y)dy.$$\\[.3cm]
+\textbf{\bm 4-c $\qqs u\in E,\widehat{\widehat{u}}(x)=u(-x)$ pp :} Il suffit de le vérifier
+ pour les fonctions caractéristiques de segments.
+
+Considérons $I=[a,b]$;
+ la suite $(\chi_{[-n,n]}\widehat{\chi_I})_{n\in\N}$ converge vers $\widehat{\chi_I}$  dans $L^2$ puis
+on peut écrire, pour presque tout $x\in\R$
+\begin{align}\widehat{(\chi_{[-n,n]}\widehat{\chi_I})}(x)&\nonumber=\int_{-n}^ne^{-2i\pi
+xy}\widehat{\chi_I}(y)dy\\ &\nonumber=\int_{-n}^n{1\over2i\pi y}(e^{-2i\pi y(x+a)}-e^{-2i\pi
+y(x+b)})dy\\ &\nonumber=\int_{0}^n{1\over\pi y}(\sin(2\pi y(x+b))-\sin(2\pi y(x+a)))dy;\end{align}
+il en résulte, pour presque tout $x\in\R$
+\begin{align}\lim_{n\lto\infty}\widehat{(\chi_{[-n,n]}\widehat{\chi_I})}(x)&\nonumber=
+\int_{0}^{+\infty}{1\over\pi y}(\sin(2\pi y(x+b))-\sin(2\pi y(x+a)))dy\\
+&\nonumber={1\over2}(\textnormal{sign}(x+b)-\textnormal{sign}(x+a))\\
+&\nonumber=\chi_I(-x).\end{align}
+
+La suite $\widehat{(\chi_{[-n,n]}\widehat{\chi_I})}_{n\in\N}$ converge dans $L^2$ vers
+$\widehat{\widehat{\chi_I}}$ donc admet une sous-suite qui converge presque partout sur $\R$ vers
+$\widehat{\widehat{\chi_I}}$. On en déduit $$\widehat{\widehat{\chi}}_I(x)=\chi_I(-x)$$ pour
+presque tout $x$ dans $\R$.\\[.2cm]
+\textbf{Formule de réciprocité de Fourier :} $u\lto \widehat{\widehat{u}}$ et $u\lto u(-x)$
+sont des opérateurs continues sur $L^2$. Ils coincident sur $E$ qui est partout dense dans $L^2$
+donc ils sont égaux, ce qui constitue le résultat.\newpage
+\begin{center}
+\textbf{\LARGE{Partie II}}\\[.6cm]\end{center}
+\textbf{\bm 1-a Existence de $u$ :} La transformée de Fourier $\Theta$ est une isométrie sur $L^2$; elle est donc injective.\\
+Elle est surjective car pour $f\in L^2$, la formule de réciprocité donne $f=\widehat{g}$, où $g$
+désigne la transformée de Fourier de $f(-x)$. Alors $u(t)$ est la transformée de Fourier inverse de
+ $$x\lto e^{-i4\pi^2tx^2}\widehat{u_0}(x)$$ qui est bien dans
+$L^2$ pour tout $t$ réel puisque $u_0\in L^2$.
+
+Notons au passage l'unicité de $u$ puis que la condition $(1)$ est contenue dans $(2)$. \\[.3cm]
+\textbf{\bm 1-b Détermination de $J$ :} $x\lto e^{-ix^2}$ est continue sur $\R^+$ et une intégration
+par parties montre que $J$ est de même nature que $$\int_0^{+\infty}{1-e^{-ix^2}\over2ix^2}dx;$$
+cette dernière intégrale met en jeu une fonction continue sommable, d'où l'existence de $J$.
+
+Pour déterminer sa valeur, on va intégrer la fonction  $h$ sur le lacet $\gamma_R$, contour du
+secteur angulaire $$\left\{z=\rho e^{i\theta};0\ie\rho\ie R\textnormal{ et
+}0\ie\theta\ie{\pi\over4}\right\},$$  utilisant le théorème des résidus dont une formulation simple
+est :\\\
+
+ \textit{ On considère un
+compact $K$ de $\C$ dont la frontière $\gamma$ est de classe $C^1$, et $f$ une fonction holomorphe
+sur $K$ sauf éventuellement en un nombre fini de points $a_1,\cdots,a_n$ intérieurs à $K$, qui en
+sont des pôles.\\ Alors on a $${1\over2i\pi}\int_\gamma
+f(z)dz=\sum_{k=1}^n\textnormal{Res}(f,a_k),$$ \textnormal{Res}$(f,a)$ désignant le résidu de $f$ au
+pôle $a$.}\\\
+
+$h$ étant entière, son intégrale sur $\gamma_R$ orienté dans le sens direct est nulle, pour tout
+$R>0$.\\ Il en résulte $$\int_{\gamma_R}h(z)dz=\int_0^Re^{-t^2}dt+\int_0^{\pi\over4}
+e^{-R^2e^{2i\theta}}iRe^{i\theta}d\theta-\int_0^Re^{-ir^2}e^{i{\pi\over4}}dr=0.$$ Pour tout $R>0$
+et $\theta\in[0,\ds{\pi\over4}[$, on peut écrire
+$$\left|e^{-R^2e^{2i\theta}}iRe^{i\theta}\right|=e^{-R^2\cos2\theta}R\ie{1\over\sqrt{\cos2\theta}},$$
+la dernière inégalité étant fournie par une simple étude  de fonction. \\ La fonction majorante
+étant sommable sur $[0,\ds{\pi\over4}]$, on a par le théorème de convergence dominée
+$$\int_0^{\pi\over4} e^{-R^2e^{2i\theta}}iRe^{i\theta}d\theta\limit{R}0.$$ On obtient donc $$
+\int_0^{+\infty}e^{-t^2}dt=\int_0^{+\infty}e^{-ir^2}e^{i{\pi\over4}}dr$$ c'est à dire
+$$J={\sqrt\pi\over2}e^{-i{\pi\over4}}={\sqrt{2\pi}\over4}(1-i).$$ \textbf{Autre méthode :} Une
+étude facile de fonction  montre que  l'on a plus précisément sur Re$(z)\se0,z\not=0$
+$$F(z)=\int_\R e^{-zt^2}dt=\sqrt{\pi\over|z|}\ e^{-{i\over2}
+\textnormal{Arctan}({\textnormal{Im}(z)\over\textnormal{Re}(z)})}.$$\\[.3cm]
+\textbf{\bm 1-c $u_0\in C_c^2\impl u_0\in L^2\cap L^1\textnormal{\textbf{ et} }\widehat{u_0}\in L^2\cap L^1$
+:} En fait le résultat vaut pour $u_0$ dans $C_c^1$.
+
+ Le premier point est clair puisque $u_0$ est continue à support compact.\\
+ On en déduit $\widehat{u_0}\in L^2$ puis pour presque tout $x$ dans $\R$
+ $$\widehat{u_0}(x)=\int_{\R}e^{-2i\pi xy}u_0(y)dy.$$  On a donc $|\widehat{u_0}|\ie\|u_0\|_{L^1}$
+ et une intégration par parties conduit  à $$\widehat{u_0}(x)={1\over2i\pi x}\int_{\R}e^{-2i\pi
+xy}u_0'(y)dy,$$ pour presque tout $x$ dans $\R$.
+
+$u_0'$ étant continue à support compact appartient à $L^2\cap L^1$; l'égalité précédente s'écrit
+alors
+ $$\widehat{u_0}(x)={1\over2i\pi x}\widehat{u_0'}(x)$$ et  on a $\widehat{u_0'}\in L^2$. On en déduit que $$g(x)=
+\min(\|u_0\|_{L^1}\ ,\ {1\over4\pi^2 x^2}+|\widehat{u_0'}(x)|^2)$$ est une fonction majorante
+intégrable de $\widehat{u_0}$, ce qui fournit $\widehat{u_0}\in L^2\cap L^1$.\\[.3cm]
+ \textbf{\bm 1-d Expression de $u(t,x)$ :}  Traitons d'abord le cas $u_0\in C_c^1(\R)$ afin d'avoir
+  $u_0$ et $\widehat{u_0}$ dans $L^2\cap L^1$.\\
+  Alors pour tout $t\in\R$, la fonction
+  $$z\lto e^{-i4\pi^2tz^2}\widehat{u_0}(z)$$ est dans $L^2\cap
+  L^1$ et a pour transformée de Fourier inverse la fonction
+  définie pour presque tout $x\in\R$ par
+  $$u(t,x)=\int_\R e^{2i\pi xz}e^{-i4\pi^2tz^2}\widehat{u_0}(z)dz.$$
+
+Considérons pour $t\in\R^*$ et $x\in\R$ fixés, la suite de fonctions
+$$f_n(z)=\chi_{[-n,n]}(z)e^{i(4\pi^2tz^2-2\pi xz)}.$$ L'intégrale précédente est limite dans $\R$
+de la suite $\left((\widehat{u_0}|f_n\right))_{n\in\N}$ dont le terme général peut s'écrire
+$$(\widehat{u_0}|f_n)=(\widehat{\widehat{u_0}}|\widehat{f_n})
+=\int_\R\overline{\widehat{f_n}(-z)}u_0(z)dz;$$ en outre on a pour tout $n\in\N$ et pour presque
+tout $z\in\R$
+\begin{align}\overline{\widehat{f_n}(-z)}&\nonumber=
+\int_{-n}^ne^{-2i\pi zy}e^{-i(4\pi^2ty^2-2\pi xy)}dy\\ &\nonumber=\int_{-n}^ne^{-i(4\pi^2ty^2-2\pi
+y(x-z))}dy\\ &\nonumber=e^{i{(x-z)^2\over4t}}\int_{-{x-z\over4\pi t} -n}^{-{x-z\over4\pi
+t}+n}e^{-i4\pi^2ty^2}dy\\ &\nonumber=\varrho\left(-{x-z\over4\pi
+t}+n\right)-\varrho\left(-{x-z\over4\pi t}-n\right)\end{align} où l'on a posé
+$$\varrho(s)=e^{i{(x-z)^2\over4t}}\int_0^se^{-i4\pi^2ty^2}dy.$$ $\varrho$ est continue impaire et
+admet une limite en $+\infty$ qui vaut, compte-tenue de la valeur de $J$,
+$$e^{i{(x-z)^2\over4t}}\int_0^{+\infty}e^{-i4\pi^2ty^2}dy=
+{1\over2}{e^{i{(x-z)^2\over4t}}\over(4\pi it)^{1\over2}}$$
+ où
+$(4\pi it)^{1\over2}$ désigne la détermination principale de la racine carrée de $4\pi it$.\\ Il en
+résulte l'existence de $C>0$ tel que $Cu_0$ soit une fonction majorante intégrable de la suite
+$(\widehat{f_n}(-z)u_0(z))_{n\in\N}$. Le théorème de convergence dominée conduit donc à
+$$u(t,x)=\int_\R{e^{i{(x-z)^2\over4t}}\over(4\pi it)^{1\over2}}u_0(z)dz$$ pour tout $t\in\R^*$ et
+presque tout $x\in\R$.
+
+Venons en au cas général. Il a été vu que l'on pouvait approcher $u_0$ dans $L^1$ et $L^2$ par une
+même fonction $\varphi\in C_c^0$; en utilisant la méthode de régularisation vue en
+\textbf{I-1-b}, on établit l'existence d'une suite de fonctions
+ $(\varphi_n)_{n\in\N}$ à valeurs dans $C_c^1$ convergente vers
+ $u_0$ dans $L^1$ et $L^2$.\\
+ Ce qui précède montre que l'on a pour tout $t\in\R^*$
+ $$ \Theta^{(-1)}\left( y\lto
+ e^{-i4\pi^2ty^2}\widehat{\varphi_n}(y)\right)\ \ =\ \ \left(x\lto
+\int_\R{e^{i{(x-z)^2\over4t}}\over(4\pi it)^{1\over2}}\varphi_n(z)dz\right).$$ Un passage à la
+limite dans $L^2$ dans le membre de gauche et un passage à la limite simple dans le membre de
+droite  conduit à l'égalité pour tout $t\in\R^*$ et presque tout $x\in\R$
+$$u(t,x)=\int_\R{e^{i{(x-z)^2\over4t}}\over(4\pi it)^{1\over2}}u_0(z)dz.$$\\[.3cm]
+\textbf{\bm 2 Unicité de la solution de $(S)$ :} On a immédiatement, pour tout $t\in\R$
+$$\|u(t)\|_{L^2}=\|\widehat{u(t)}\|_{L^2}=\|\widehat{u_0}\|_{L^2}=\|u_0\|.$$
+
+Une autre solution $v$ de $(S)$ vérifie,  pour tout $t\in\R$ $$\|u(t)-v(t)\|_{L^2}=
+\|\widehat{u(t)}-\widehat{v(t)}\|_{L^2}=0,$$ c'est à dire $u=v$.
+ On retrouve alors un résultat déjà annoncé en \textbf{II-1-a} :\\ Pour $u_0\in L^2$ donnée, $u$ est définie
+de façon unique sur $\R$.\\[.3cm]
+\textbf{\bm 3-i Détermination de $v$ pour $V_0(x)=u_0(x-x_0)$ :} Pour $u_0\in L^2\cap L^1$,
+$(3)$ donne immédiatement $$v(t,x)=u(t,x-x_0),$$ pour tout $(t,x)\in\R^2$.
+ L'opérateur $$ \varphi\lto\Theta^{(-1)}\left(y\lto e^{-i4\pi^2ty^2}\widehat{\varphi}(y)\right)$$
+étant continue sur $L^2$ et $L^2\cap L^1$ étant partout dense, on en déduit le résultat pour
+$u_0\in L^2$.\\[.3cm]
+\textbf{\bm 3-ii Détermination de $v$ pour $V_0(x)=\lambda_0^{1\over2}u_0(\lambda_0x)$ :} Un
+raisonnement analogue conduit à $$v(t,x)=\lambda_0^{1\over2}u(\lambda_0^2t,\lambda_0x),$$
+ pour tout $(t,x)\in\R^2$.\\[.3cm]
+\textbf{\bm 4-a Détermination de $c_1$ et $c_2$ :}  Pour $u_0\in L^2\cap L^1$,
+$(3)$ montre immédiatement que pour le choix de $c_1=c^2$ et $c_2=2c$, la fonction $(t,x)\lto
+v(t,x)$ est solution de $(S)$ pour la donnée initiale dans $L^2\cap L^1$
+$$v_0(x)=v(0,x)=e^{ixc}u_0(x).$$
+
+On démontre comme précédemment que le résultat s'étend à $u_0\in L^2$.\\[.3cm]
+\textbf{\bm 4-b $v$ est solution de $(S)$ :} Nous allons établir que $(t,x)\lto v(t,x)$ est solution de
+$(S)$ pour la donnée initiale dans $L^2$
+$$v_0(x)=v(0,x)={1\over(4\pi)^{1\over2}}\overline{\widehat{u_0}}\left({x\over4\pi}\right)=
+{1\over(4\pi)^{1\over2}}\widehat{\overline{u_0}}\left(-{x\over4\pi}\right).$$
+
+Traitons d'abord le cas $u_0\in L^2\cap L^1$.\\ On peut alors utiliser $(3)$, ce qui fournit pour
+tout $(t,x)\in\R^2$  $$v(t,x)={1\over(4\pi)^{1\over2}}\int_\R
+e^{-{i\over4}(tz^2-2xz)}\overline{u_0}(z)dz.$$
+
+Mais la solution de $(S)$ de donnée initiale $v_0\in L^2$ est la transformée de Fourier inverse de
+$$y\lto e^{-i4\pi^2ty^2}\widehat{v_0}(y)=(4\pi)^{1\over2}e^{-i4\pi^2ty^2}\overline{u}(4\pi y),$$
+l'égalité découlant de la formule de réciprocité.\\ Cette dernière fonction étant dans $L^2\cap
+L^1$, la solution s'écrit donc pour tout $(t,x)\in\R^2$
+\begin{align}
+(4\pi)^{1\over2}\int_\R e^{2i\pi xy}e^{-i4\pi^2ty^2}\overline{u}(4\pi y)dy
+&\nonumber={1\over(4\pi)^{1\over2}}\int_\R e^{-{i\over4}(tz^2-2xz)}\overline{u_0}(z)dz =v(t,x)
+\end{align}
+d'où le résultat dans ce premier cas.
+
+Enfin le cas $u_0\in L^2$ se traite comme dans les questions qui précèdent.
+\begin{center}
+\textbf{\LARGE{Partie III}}\\[.6cm]\end{center}
+\textbf{\bm 1 Exemple demandé :} Cette question ne présente d'intérêt que si $f$ est supposée  $>0$.
+
+Considérons  $\varphi(s)=e^{-s^2}$; alors la fonction définie sur $\R^2$ par $$f(t,x)=\varphi(t)\
+\varphi(\varphi^2(t)x)$$ vérifie les propriétés requises.\\[.3cm]
+\textbf{\bm 2 Identité souhaitée :} La fonction $\widehat{u_0}$ est contenue dans $C_c^1\subset L^2\cap L^1$ donc
+pour tout $(t,x)\in\R^2$, le théorème
+de Tonelli assure la sommabilité sur $\R^2$ de $$(\xi,\eta)\lto
+\left|e^{-i4\pi^2t(\xi^2+\eta^2)+i2\pi x(\xi+\eta)}\widehat{u_0}(\xi)\widehat{u_0}(\eta)\right|=
+|\widehat{u_0}(\xi)\widehat{u_0}(\eta)|$$ d'où par le théorème de Fubini on obtient
+$$\int_{\R^2}e^{-i4\pi^2t(\xi^2+\eta^2)+i2\pi x(\xi+\eta)}\widehat{u_0}(\xi)\widehat{u_0}(\eta)d\xi
+d\eta=\left(\int_{\R}e^{-i4\pi^2ty^2+i2\pi xy}\widehat{u_0}(y)dy\right)^2=u(t,x)^2.$$
+
+Il en résulte
+$$\int_{\R^2}|u(t,x)|^6dxdt=\int_{\R^2}\left|\int_{\R^2}e^{-i4\pi^2t(\xi^2+\eta^2)+i2\pi
+x(\xi+\eta)}\widehat{u_0}(\xi)\widehat{u_0}(\eta)d\xi d\eta\right|^3dxdt.$$\\[.3cm]
+\textbf{\bm 3 Existence de $C_1$ :} Il semblerait qu'il y'ait une erreur dans l'énoncé du résultat
+à admettre car on a l'inclusion $$L^1(\R^2)\cap L^2(\R^2)\subset L^{3\over2}(\R^2).$$ Pour que cet
+énoncé présente un intérêt, on supposera $\widehat{H}$ définie pour $H\in L^1(\R^2)$ et que
+l'inégalité admise vaut pour $H\in L^1(\R^2)\cap L^{3\over2}(\R^2)$.\\[.2cm]
+
+ Notons $\Omega$ le demi-plan ouvert de $\R^2$ situé au dessus de la
+première bissectrice puis $$\omega=\{(x,y)\in\R^2;x>\pi y^2\}.$$
+
+L'application définie sur $\R^2$ par $$(\xi,\eta)\lto\left(\sigma=2\pi(\xi^2+\eta^2)\ ,\
+\tau=-\xi-\eta\right)$$ induit un $C^1$ difféomorphisme de $\Omega$ sur $\omega$  dont la
+réciproque est $$(\sigma,\tau)\lto\left(\xi={1\over2}(-\tau+({\sigma/\pi}-\tau^2)^{1\over2})\ ,\
+\eta={1\over2}(-\tau-({\sigma/\pi}-\tau^2)^{1\over2})\right).$$
+
+Ce changement de variable fournit, pour tout $(t,x)\in\R^2$
+\begin{align}
+\int_{\R^2}e^{-i4\pi^2t(\xi^2+\eta^2)+i2\pi x(\xi+\eta)}\widehat{u_0}(\xi)\widehat{u_0}(\eta)d\xi
+d\eta&\nonumber=2\int_\Omega e^{-i4\pi^2t(\xi^2+\eta^2)+i2\pi
+x(\xi+\eta)}\widehat{u_0}(\xi)\widehat{u_0}(\eta)d\xi d\eta\\ &\nonumber=\int_\omega
+e^{-2i\pi(t\sigma+x\tau)}{\widehat{u_0}(\xi)\widehat{u_0}(\eta)\over2\pi(\xi-\eta)}d\sigma
+d\tau\\&\nonumber=\widehat{H}(t,x),\end{align} où l'on a posé sur $\R^2$
+$$H(\sigma,\tau)={\widehat{u_0}({1\over2}(-\tau+|{\sigma/\pi}-\tau^2|^{1\over2}))\
+\widehat{u_0}({1\over2}(-\tau-|{\sigma/\pi}-\tau^2|^{1\over2}))\over2\pi|\sigma/\pi-\tau^2|^{1\over2}}\
+\chi_\omega(\sigma,\tau).$$
+
+ Introduisons $M$ un majorant de $|\widehat{u_0}|$ et  $[-A,A]$ un segment de $\R$ contenant son
+ support.\\
+ On a successivement $$\int_{\R^2}|H(\sigma,\tau)|d\sigma d\tau=
+ \int_{\R^2}|\widehat{u_0}(\xi)|\ |\widehat{u_0}(\eta)|d\xi
+d\eta\ie4A^2M^2$$
+ puis \begin{align}\int_{\R^2}|H(\sigma,\tau)|^{3\over2}d\sigma
+d\tau&\nonumber={1\over(2\pi)^{1\over2}}\int_{\R^2}{|\widehat{u_0}(\xi)|^{3\over2}\
+|\widehat{u_0}(\eta)|^{3\over2}\over|\xi-\eta|^{1\over2}}d\xi d\eta\\
+&\nonumber\ie{M^3\over(2\pi)^{1\over2}}\int_{[-A,A]^2}{d\xi
+d\eta\over|\xi-\eta|^{1\over2}}\end{align} c'est à dire
+$$\int_{\R^2}|H(\sigma,\tau)|^{3\over2}d\sigma d\tau\ie{16M^3A^{3\over2}\over3\pi^{1\over2}}$$
+ donc $H\in L^1(\R^2)\cap L^{3\over2}(\R^2)$.\\ D'après le résultat admis, $\widehat{H}\in
+ L^{3}(\R^2)$ et on a
+ $$\int_{\R^2}|\widehat{H}(t,x)|^3dtdx\ie C_2\left\{\int_{\R^2}|H(\sigma,\tau)|^{3\over2}d\sigma
+ d\tau\right\}^2.$$
+
+ On obtient l'inégalité souhaitée pour le choix de
+ $$C_1={C_2^{1\over2}\over(2\pi)^{1\over2}}.$$\\[.3cm]
+ \textbf{\bm 4 Détermination de $C(S)$ :} L'inégalité de Holder adjointe à l'inégalité admise donne
+\begin{align}\int_{\R^2}{|\widehat{u_0}(\xi)|^{3\over2}\
+|\widehat{u_0}(\eta)|^{3\over2}\over|\xi-\eta|^{1\over2}}d\xi
+d\eta&\nonumber=\int_{\R}\left(|\widehat{u_0}(\xi)|^{3\over2}\int_\R{
+|\widehat{u_0}(\eta)|^{3\over2}\over|\xi-\eta|^{1\over2}}d\eta\right) d\xi\\&\nonumber \ie
+\left(\int_{\R}|\widehat{u_0}(\xi)|^{2}d\xi\right)^{3\over4}\left(\int_{\R}(\int_\R{
+|\widehat{u_0}(\eta)|^{3\over2}\over|\xi-\eta|^{1\over2}}d\eta)^4d\xi\right)^{1\over4}\\
+&\nonumber\ie C_3^{1\over4}\left(\int_{\R}|\widehat{u_0}(\xi)|^{2}d\xi\right)^{3\over4}
+\left(\int_{\R}|\widehat{u_0}(\xi)|^{2}d\xi\right)^{3\over4}
+\end{align}
+c'est à dire, puisque la transformée de Fourier est une isométrie sur $L^2$
+$$\int_{\R^2}{|\widehat{u_0}(\xi)|^{3\over2}\
+|\widehat{u_0}(\eta)|^{3\over2}\over|\xi-\eta|^{1\over2}}d\xi d\eta\ie
+C_3^{1\over4}\left(\int_{\R}|u_0(x)|^{2}dx\right)^{3\over2}.$$
+
+On obtient donc la majoration souhaitée pour la valeur de $$C(S)=C_1^2C_3^{1\over2}.$$\\[.3cm]
+\textbf{\bm 5 Etude de l'estimation à l'aide de $v$ :} Un simple calcul à l'aide d'un changement de variable
+ montre que cette estimation n'est pas améliorée.
+ \begin{center}
+\textbf{\LARGE{Partie IV}}\\[.6cm]\end{center}
+\textbf{\bm 1-a Identités vérifiées par $u$ :} $u_0\in C_c^2$ donc on peut appliquer $(3)$ qui alors est une intégrale sur un segment;
+posons pour $(t,x,z)\in\R^*\times\R^2$ $$\Phi(t,x,z)={e^{i{(x-z)^2\over4t}}\over(4\pi
+it)^{1\over2}}u_0(z).$$
+
+$\Phi$ est de classe $C^2$ sur $\R^*\times\R^2$ (rappelons que la détermination principale de la
+racine carrée est holomorphe sur $\C\backslash\R^-$) donc les deux premiers points sont assurés par
+le théorème de dérivation sous le signe somme.
+
+Par ailleurs on a sur $\R^*\times\R^2$ $${\partial\Phi\over\partial
+t}(t,x,z)=-\left({i(x-z)^2\over4t^2}+{1\over2t}\right){e^{i{(x-z)^2\over4t}}\over(4\pi
+it)^{1\over2}}u_0(z)$$ puis \begin{align} {\partial^2\Phi\over\partial
+x^2}(t,x,z)&\nonumber=\left({i\over2t}-{(x-z)^2\over4t^2}\right){e^{i{(x-z)^2\over4t}}\over(4\pi
+it)^{1\over2}}u_0(z)\\ &\nonumber=-i{\partial\Phi\over\partial t}(t,x,z);\end{align} il en résulte
+sur $\R^*\times\R$ $$i{\partial u\over\partial t}(t,x)=\int_\R i{\partial\Phi\over\partial
+t}(t,x,z)dz=-\int_\R{\partial^2\Phi\over\partial x^2}(t,x,z)dz=-{\partial^2u\over\partial
+x^2}(t,x).$$\\[.3cm]
+\textbf{\bm 1-b Etude de $\ds\lim_{t\lto0}u(t)$ dans $L^2$ :} Pour tout $t\in\R$,
+$u(t)$ est la transformée de Fourier inverse de $$x\lto e^{-i4\pi^2tx^2}\widehat{u_0}(x),$$
+fonction qui tend vers $\widehat{u_0}$ dans $L^2$ à l'origine par application du théorème de
+convergence dominée.
+
+ La transformée de Fourier inverse étant continue sur $L^2$, on en déduit
+$$\lim_{t\lto0}u(t)=u_0.$$\\[.3cm]
+\textbf{\bm 2 Détermination de $Q$ :} Un petit calcul montre que pour le choix de
+$$(\alpha,\beta,\gamma)=(3^{1\over4},2,{1\over2})$$ la fonction proposée vérifie les propriétés
+requises.\\[.3cm]
+\textbf{\bm 3 $P$ est solution de $(N)$ :} La vérification est immédiate.\\[.3cm]
+\textbf{\bm 4-a $S$ vérifie $(N)$ :}  Les deux premiers points sont clairement vérifiés.
+
+On a successivement dans $[0,T[\times\R$ $${\partial S\over\partial
+t}(t,x)={e^{-{i\over(t-T)}+{ix^2\over4(t-T)}}\over4(T-t)^{5\over2}}\left((2(T-t)+i(4-x^2))Q\left({x\over
+t-T}\right)-4xQ'\left({x\over t-T}\right)\right)$$ puis $${\partial^2 S\over\partial
+x^2}(t,x)={e^{-{i\over(t-T)}+{ix^2\over4(t-T)}}\over4(T-t)^{5\over2}}\left((-x^2+2i(t-T))Q\left({x\over
+t-T}\right)+4ixQ'\left({x\over t-T}\right)+4Q''\left({x\over t-T}\right)\right).$$
+
+En remplaçant $Q''$ par $Q-Q^5$ dans la dernière relation, on obtient le résultat souhaité.\\[.3cm]
+\textbf{\bm 4-b Etude de $\ds\lim_{t\lto T} S(t,x)$ :} $Q$ est  à décroissance rapide donc
+cette limite est nulle pour $x\in\R^*$.
+
+Par ailleurs $\ds\lim_{t\lto T}|S(t,0)|=+\infty$ donc elle n'admet pas de limite en $T$ dans ce
+dernier cas.\\[.3cm]
+\textbf{\bm 5 Existence de $u_0$ :} Considérons  sur $\R$ la fonction
+$$u_0(x)={1\over T^{1\over2}}\ e^{-i{(4-x^2)\over4T}}\ Q\left({x\over T}\right),$$ pour $T>0$ fixé.
+
+ On a bien $u_0\in C^2(\R)\cap L^2$ puis il n'existe pas de solution de $(N)$ sur $\R$ associée à $u_0$
+ car en vertu  de l'unicité, sa restriction à $\left[0,T\right[$ devrait co\"\i ncider  avec $S$,
+ qui n'est pas bornée au voisinage de $(T,0)$.\\[.3cm]
+\textbf{\bm 6-a $\lambda^{1\over2}u(\lambda^2t,\lambda x)$ est solution de $(N)$ sur
+$[0,{T\over\lambda^2}]$ :} La vérification est immédiate.\\[.3cm]
+\textbf{\bm 6-b $P(t,x)$ n'est pas stable dans $L^2$ :} Il nous faut établir la proposition
+$$\ex\varepsilon>0,\qqs\delta>0,\ex u_0\in C^2\cap L^2\textnormal{ tel que
+}\int_{\R}|Q-u_0|^2\ie\delta$$ et tel que pour toute solution éventuelle de $(N)$ sur $\R$,
+$u(t,x)$ de donnée initiale $u_0$, $$\ex t\in\R\textnormal{ tel que }
+\int_{\R}|P(t,x)-u(t,x)|^2dx>\varepsilon.$$
+
+ La fonction $\lambda^{1\over2}P(\lambda^2t,\lambda x)$ est solution de $(N)$ sur $\R$ pour la
+condition initiale $\zeta_\lambda(x)=\lambda^{1\over2}Q(\lambda x)$.
+
+Remarquons que  $\ds\lim_{\lambda->1}\zeta_\lambda=Q$ dans $L^2$; en effet on a déjà la convergence
+simple sur $\R$ puis pour tout $\lambda\in[{1\over2},{3\over2}]$, on a la domination sur $\R$
+$$|Q(x)-\zeta_\lambda(x)|^2\ie5Q^2({x/2}).$$ Le membre de droite étant sommable sur $\R$, le
+théorème de convergence dominée conduit à $$\|Q-\zeta_\lambda\|_{L^2}^2\limite{\lambda}{1}0.$$
+
+ Fixons un réel $\delta>0$; d'après la remarque il existe un voisinage $V$ de 1 tel que :
+
+$$\qqs\lambda\in V,\ \int_{\R}|Q-\zeta_\lambda|^2\ie\delta.$$ Pour le choix de $u_0=\zeta_\lambda$
+avec $\lambda\in V\backslash\{1\}$, on peut écrire pour tout $t\in\R$
+\begin{align}\int_\R|P(t,x)-u(t,x)|^2dx &\nonumber=\int_\R|P(t,x)-\lambda^{1\over2}P(\lambda^2t,\lambda
+x)|^2dx\\&\nonumber=\int_\R|e^{i(1-\lambda^2)t}Q(x)-\lambda^{1\over2}Q(\lambda x)|^2dx\\
+&\nonumber\se\int_\R\sin^2((1-\lambda^2)t)\ Q( x)^2dx\end{align} c'est à dire
+$$\int_\R|P(t,x)-u(t,x)|^2dx\se\sin^2((1-\lambda^2)t)\|Q\|^2_{L^2}.$$
+
+En choisissant $\ds t={\pi\over2(1-\lambda^2)}$, on obtient le résultat souhaité pour la valeur de
+$\varepsilon=\ds{1\over2}\|Q\|^2_{L^2}.$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
