@@ -1,0 +1,93 @@
+body {
+    font-family:  Arial, sans-serif;
+    font-size: 14pt;
+    color: black;
+    background-color: rgb(255, 255, 204);
+    }
+    
+      
+header {
+      display: block;
+      background-color: rgba(176,196,222,0.70); <!-- Bleu acier clair avec transparence -->
+      text-align: center;
+      font-size:  14pt;
+    }
+    
+.menuh {
+    display: flex;                 /* Transformation en flexbox */
+    padding:0;                    /* Suppression des marges internes */
+    background-color: rgba(176,196,222,0.70);       /* Ajout de la couleur d'arrière-plan : Bleu acier clair avec transparence */ 
+    justify-content: space-around;/* Alignements des liens dans le menu */
+    margin: 20px auto;
+}
+.menuh li {
+    list-style-type: none ;       /* Suppression des puces */
+
+}
+.menuh a {
+    display:block;                /* Transformation en block */
+    margin: 1.5rem;               /* Marges externes */
+    text-align: center;           /* Centrage du texte */
+    color: black;                  /* Couleur du texte */
+    text-decoration: none;        /* Suppression du soulignement */
+}
+.menuh a.actif {
+    background-color: #000 ;
+    color: #1ABC9C ;
+    border-color: #1ABC9C ;
+}
+.menuh a:hover,
+.menuh a:hover.actif{
+    color: white;
+}
+    
+    
+.menu {
+    display: flex;                /* Transformation en flexbox */
+    padding:0;                    /* Suppression des marges internes */
+    background-color: rgba(176,196,222,0.70);       /* Ajout de la couleur d'arrière-plan : Bleu acier clair avec transparence */ 
+    justify-content: space-around;/* Alignements des liens dans le menu */
+    margin: 100px auto;
+}
+.menu li {
+    list-style-type: none ;       /* Suppression des puces */
+
+}
+.menu a {
+    display:block;                /* Transformation en block */
+    min-width: 170px;             /* Largeur minimale des liens */
+
+    margin: 0.5rem;               /* Marges externes */
+    padding: 0.4rem 0;            /* Marges internes */
+    text-align: center;           /* Centrage du texte */
+    background-color: rgb(65,209,204) ;    /* Arrière-plan : turquoise */
+    color: black;                  /* Couleur du texte */
+    text-decoration: none;        /* Suppression du soulignement */
+    border: 1px solid #fff;       /* Ajout d'une bordure */
+    border-radius: 8px;           /* Arrondis des bordures */
+
+    transition: all 1s ;          /* Ajout des effets de transition */
+}
+.menu a.actif {
+    background-color: #000 ;
+    color: #1ABC9C ;
+    border-color: #1ABC9C ;
+}
+.menu a:hover,
+.menu a:hover.actif{
+    background-color: rgb(30,144,255) ;    /* Arrière-plan : bleu Dodger */
+    color: white;
+    border-color: #ffe843;
+}
+
+article {
+    display: block;
+    margin: auto;
+    padding: 3px;
+    width: 60%;
+    background-color: rgb(240,248,255);
+    text-align: justify;
+    font-size:  16pt;
+}
+
+
